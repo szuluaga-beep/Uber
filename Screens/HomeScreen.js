@@ -1,14 +1,34 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import NavOptions from '../components/NavOptions';
+
 
 const HomeScreen = () => {
     return (
-        <View>
-            <Text>I am the HomeScreen</Text>
+      <SafeAreaView>
+        <View style={styles.container}>
+          <Image
+            source={{
+              uri: "https://links.papareact.com/gzs",
+            }}
+            style={{
+              width: 100,
+              height: 100,
+              resizeMode: "contain",
+            }}
+          />
+          <NavOptions>
+            
+          </NavOptions>
         </View>
-    )
+      </SafeAreaView>
+    );
 }
 
 export default HomeScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    container: {
+        padding: 20
+    }
+});
