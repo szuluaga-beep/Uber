@@ -9,6 +9,10 @@ import {
   View,
 } from "react-native";
 import { Icon } from "react-native-elements";
+import { useSelector } from "react-redux";
+import tw from "tailwind-react-native-classnames";
+
+import { selectOrigin } from "../slices/navSlice";
 
 const data = [
   {
@@ -26,30 +30,28 @@ const data = [
 ];
 
 const NavOptions = () => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
+  const origin=useSelector(selectOrigin)
   return (
     <FlatList
       data={data}
       horizontal
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => (
-          <TouchableOpacity
-        onPress={()=>navigation.navigate(item.screen)}
-              style={styles.container}>
-          <View>
-            <Image
-              style={styles.image}
-              source={{ uri: item.image }}
+        <TouchableOpacity
+          onPress={() => navigation.navigate(item.screen)}
+          style={styles.container}
+          disabled={!origin}
+        >
+          <View style={tw`${!origin&&"opacity-20"}`}>
+            <Image style={styles.image} source={{ uri: item.image }} />
+            <Text style={styles.texto}>{item.title}</Text>
+            <Icon
+              style={styles.icono}
+              type="antdesign"
+              name="arrowright"
+              color="white"
             />
-                  <Text
-                  style={styles.texto}
-                  >{item.title}</Text>
-                  <Icon
-                      style={styles.icono}
-                      type="antdesign"
-                      name="arrowright"
-                      color="white"
-                  />
           </View>
         </TouchableOpacity>
       )}
