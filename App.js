@@ -3,16 +3,18 @@ import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Provider } from "react-redux";
 
 import HomeScreen from "./Screens/HomeScreen";
 import MapScreen from "./Screens/MapScreen";
-import { Provider } from "react-redux";
+import { store } from "./store";
 
 const App = () => {
   const Stack = createNativeStackNavigator();
   return (
-    <Provider store={}>
-
+    
+<Provider store={store}>
+      
       <NavigationContainer>
         <SafeAreaProvider>
           <Stack.Navigator>
@@ -33,7 +35,8 @@ const App = () => {
           </Stack.Navigator>
         </SafeAreaProvider>
       </NavigationContainer>
-    </Provider>
+</Provider>
+    
   );
 };
 
