@@ -46,7 +46,7 @@ const HomeScreen = () => {
           minLength={2}
           query={{
             key: GOOGLE_MAPS_APYKEY,
-            language: "en",
+            language: "es",
           }}
           nearbyPlacesAPI="GooglePlacesSearch"
           debounce={400}
